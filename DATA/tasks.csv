@@ -1,0 +1,8 @@
+task_id,task_name,owner,deadline,status,dependency,estimated_hours,impact
+T001,Login səhifəsi dizaynı,Aysel,2026-05-12,in_progress,,8,high
+T002,Backend API yazılması,Murad,2026-05-15,not_started,T001,16,high
+T003,Database sxemi,Elvin,2026-05-11,in_progress,,6,high
+T004,Test ssenariləri,Leyla,2026-05-20,not_started,T002,10,medium
+T005,Deployment script,Murad,2026-05-13,not_started,,4,low
+T006,Sənədləşdirmə,Aysel,2026-05-25,not_started,T004,5,low
+T007,Performance testi,Elvin,2026-05-14,not_started,T002;T003,8,medium

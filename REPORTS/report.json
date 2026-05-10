@@ -1,0 +1,121 @@
+{
+  "generated_at": "2026-05-10T23:30:44.832501",
+  "tasks_prioritized": [
+    {
+      "task_id": "T001",
+      "task_name": "Login səhifəsi dizaynı",
+      "owner": "Aysel",
+      "deadline": "2026-05-12T00:00:00",
+      "status": "in_progress",
+      "dependency": NaN,
+      "estimated_hours": 8,
+      "impact": "high",
+      "priority_score": 100
+    },
+    {
+      "task_id": "T003",
+      "task_name": "Database sxemi",
+      "owner": "Elvin",
+      "deadline": "2026-05-11T00:00:00",
+      "status": "in_progress",
+      "dependency": NaN,
+      "estimated_hours": 6,
+      "impact": "high",
+      "priority_score": 100
+    },
+    {
+      "task_id": "T002",
+      "task_name": "Backend API yazılması",
+      "owner": "Murad",
+      "deadline": "2026-05-15T00:00:00",
+      "status": "not_started",
+      "dependency": "T001",
+      "estimated_hours": 16,
+      "impact": "high",
+      "priority_score": 70
+    },
+    {
+      "task_id": "T004",
+      "task_name": "Test ssenariləri",
+      "owner": "Leyla",
+      "deadline": "2026-05-20T00:00:00",
+      "status": "not_started",
+      "dependency": "T002",
+      "estimated_hours": 10,
+      "impact": "medium",
+      "priority_score": 50
+    },
+    {
+      "task_id": "T007",
+      "task_name": "Performance testi",
+      "owner": "Elvin",
+      "deadline": "2026-05-14T00:00:00",
+      "status": "not_started",
+      "dependency": "T002;T003",
+      "estimated_hours": 8,
+      "impact": "medium",
+      "priority_score": 50
+    },
+    {
+      "task_id": "T005",
+      "task_name": "Deployment script",
+      "owner": "Murad",
+      "deadline": "2026-05-13T00:00:00",
+      "status": "not_started",
+      "dependency": NaN,
+      "estimated_hours": 4,
+      "impact": "low",
+      "priority_score": 40
+    },
+    {
+      "task_id": "T006",
+      "task_name": "Sənədləşdirmə",
+      "owner": "Aysel",
+      "deadline": "2026-05-25T00:00:00",
+      "status": "not_started",
+      "dependency": "T004",
+      "estimated_hours": 5,
+      "impact": "low",
+      "priority_score": 20
+    }
+  ],
+  "risks": [
+    {
+      "task": "Backend API yazılması",
+      "type": "BLOCKED",
+      "severity": "HIGH",
+      "message": "'Login səhifəsi dizaynı' bitməyib, bu task başlaya bilməz"
+    },
+    {
+      "task": "Test ssenariləri",
+      "type": "BLOCKED",
+      "severity": "HIGH",
+      "message": "'Backend API yazılması' bitməyib, bu task başlaya bilməz"
+    },
+    {
+      "task": "Performance testi",
+      "type": "BLOCKED",
+      "severity": "HIGH",
+      "message": "'Backend API yazılması' bitməyib, bu task başlaya bilməz"
+    },
+    {
+      "task": "Performance testi",
+      "type": "BLOCKED",
+      "severity": "HIGH",
+      "message": "'Database sxemi' bitməyib, bu task başlaya bilməz"
+    },
+    {
+      "task": "Deployment script",
+      "type": "DELAY_RISK",
+      "severity": "HIGH",
+      "message": "2 gün qalıb, hələ başlanmayıb"
+    },
+    {
+      "task": "Sənədləşdirmə",
+      "type": "BLOCKED",
+      "severity": "HIGH",
+      "message": "'Test ssenariləri' bitməyib, bu task başlaya bilməz"
+    }
+  ],
+  "status_report": "\n# Sprint Status Report\n\nÜmumi task sayı: 7\nAşkar olunan risk sayı: 6\n\nƏn yüksək prioritetli task: Login səhifəsi dizaynı\n\nQeyd: AI report deaktivdir, çünki OpenAI API quota/billing aktiv deyil.\n"
+}
