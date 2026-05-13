@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-10T23:30:44.832501",
+  "generated_at": "2026-05-11T01:31:11.940024",
   "tasks_prioritized": [
     {
       "task_id": "T001",
@@ -32,7 +32,7 @@
       "dependency": "T001",
       "estimated_hours": 16,
       "impact": "high",
-      "priority_score": 70
+      "priority_score": 80
     },
     {
       "task_id": "T004",
@@ -46,6 +46,17 @@
       "priority_score": 50
     },
     {
+      "task_id": "T005",
+      "task_name": "Deployment script",
+      "owner": "Murad",
+      "deadline": "2026-05-13T00:00:00",
+      "status": "not_started",
+      "dependency": NaN,
+      "estimated_hours": 4,
+      "impact": "low",
+      "priority_score": 50
+    },
+    {
       "task_id": "T007",
       "task_name": "Performance testi",
       "owner": "Elvin",
@@ -55,17 +66,6 @@
       "estimated_hours": 8,
       "impact": "medium",
       "priority_score": 50
-    },
-    {
-      "task_id": "T005",
-      "task_name": "Deployment script",
-      "owner": "Murad",
-      "deadline": "2026-05-13T00:00:00",
-      "status": "not_started",
-      "dependency": NaN,
-      "estimated_hours": 4,
-      "impact": "low",
-      "priority_score": 40
     },
     {
       "task_id": "T006",
@@ -81,6 +81,12 @@
   ],
   "risks": [
     {
+      "task": "Database sxemi",
+      "type": "OVERDUE",
+      "severity": "CRITICAL",
+      "message": "Deadline 1 gün keçib!"
+    },
+    {
       "task": "Backend API yazılması",
       "type": "BLOCKED",
       "severity": "HIGH",
@@ -91,6 +97,18 @@
       "type": "BLOCKED",
       "severity": "HIGH",
       "message": "'Backend API yazılması' bitməyib, bu task başlaya bilməz"
+    },
+    {
+      "task": "Deployment script",
+      "type": "DELAY_RISK",
+      "severity": "HIGH",
+      "message": "1 gün qalıb, hələ başlanmayıb"
+    },
+    {
+      "task": "Performance testi",
+      "type": "DELAY_RISK",
+      "severity": "HIGH",
+      "message": "2 gün qalıb, hələ başlanmayıb"
     },
     {
       "task": "Performance testi",
@@ -105,17 +123,11 @@
       "message": "'Database sxemi' bitməyib, bu task başlaya bilməz"
     },
     {
-      "task": "Deployment script",
-      "type": "DELAY_RISK",
-      "severity": "HIGH",
-      "message": "2 gün qalıb, hələ başlanmayıb"
-    },
-    {
       "task": "Sənədləşdirmə",
       "type": "BLOCKED",
       "severity": "HIGH",
       "message": "'Test ssenariləri' bitməyib, bu task başlaya bilməz"
     }
   ],
-  "status_report": "\n# Sprint Status Report\n\nÜmumi task sayı: 7\nAşkar olunan risk sayı: 6\n\nƏn yüksək prioritetli task: Login səhifəsi dizaynı\n\nQeyd: AI report deaktivdir, çünki OpenAI API quota/billing aktiv deyil.\n"
+  "status_report": "\n# Sprint Status Report\n\nÜmumi task sayı: 7\nAşkar olunan risk sayı: 8\n\nƏn yüksək prioritetli task: Login səhifəsi dizaynı\n\nQeyd: AI report deaktivdir, çünki OpenAI API quota/billing aktiv deyil.\n"
 }
