@@ -4,15 +4,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 def create_jira_issue(task_name, description):
+
     jira_url = os.getenv("JIRA_BASE_URL")
     jira_email = os.getenv("JIRA_EMAIL")
     jira_token = os.getenv("JIRA_API_TOKEN")
     project_key = os.getenv("JIRA_PROJECT_KEY")
-
-    print("JIRA_BASE_URL:", jira_url)
-    print("JIRA_EMAIL:", jira_email)
-    print("JIRA_PROJECT_KEY:", project_key)
 
     url = f"{jira_url}/rest/api/3/issue"
 
@@ -27,39 +25,79 @@ def create_jira_issue(task_name, description):
                     {
                         "type": "paragraph",
                         "content": [
-                            {"type": "text", "text": description}
+                            {
+                                "type": "text",
+                                "text": description
+                            }
                         ]
                     }
                 ]
             },
-            "issuetype": {"name": "Task"}
+            "issuetype": {
+                "name": "Task"
+            }
         }
     }
 
-    print("Sending request to Jira...")
+    response = requests.post(
+        url,
+        json=payload,
+        auth=(jira_email, jira_token),
+        headers={
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        }
+    )
 
-    try:
-        response = requests.post(
+    if response.status_code == 201:
+        issue_key = response.json()["key"]
+        print(f"Jira issue created: {issue_key}")
+    else:
+        print("Error:", response.status_code)
+        print(response.text)
+
+
+class JiraConnector:
+
+    def __init__(self):
+        self.base_url = os.getenv("JIRA_BASE_URL")
+        self.email = os.getenv("JIRA_EMAIL")
+        self.token = os.getenv("JIRA_API_TOKEN")
+        self.project_key = os.getenv("JIRA_PROJECT_KEY")
+
+    def fetch_tasks(self):
+
+        url = f"{self.base_url}/rest/api/3/search"
+
+        query = {
+            "jql": f"project={self.project_key}",
+            "maxResults": 10,
+            "fields": "summary,status"
+        }
+
+        response = requests.get(
             url,
-            json=payload,
-            auth=(jira_email, jira_token),
+            params=query,
+            auth=(self.email, self.token),
             headers={
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            timeout=20
+                "Accept": "application/json"
+            }
         )
 
-        print("Response received")
         print("Status code:", response.status_code)
-        print("Response text:", response.text[:500])
 
-        if response.status_code == 201:
-            issue_key = response.json()["key"]
-            print(f"Jira issue created: {issue_key}")
-        else:
-            print("Jira issue was NOT created.")
+        data = response.json()
 
-    except Exception as e:
-        print("Request failed:")
-        print(e)
+        tasks = []
+
+        for issue in data.get("issues", []):
+
+            fields = issue.get("fields", {})
+
+            tasks.append({
+                "task_id": issue.get("key", issue.get("id", "UNKNOWN")),
+                "task_name": fields.get("summary", "No summary"),
+                "status": fields.get("status", {}).get("name", "Unknown")
+            })
+
+        return tasks

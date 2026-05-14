@@ -1,53 +1,20 @@
-# PM AI Agent — Development Roadmap
+# Roadmap
 
-## Mərhələ 1 — MVP (Tamamlanıb)
+## Phase 1 — MVP Completed
+- CLI-based AI Agent
+- Task parsing
+- Prioritization
+- Basic risk detection
+- Basic status report generation
 
-### Implementasiya olunan funksiyalar
-- CLI əsaslı istifadəçi interfeysi
-- CSV parsing və manual input
-- Rule-based prioritization engine
-- Risk detection engine
-- Dependency analysis
-- JSON report generation
-- OpenAI LLM integration (MVP səviyyəsində)
-- Modular architecture
+## Phase 2 — Partially Completed
+- Jira REST API integration — Completed
+- Automatic Jira issue creation — Completed
+- ML-based risk prediction — Planned
+- Web UI with Streamlit — Planned
 
-### Texnologiyalar
-- Python
-- Pandas
-- OpenAI API
-- dotenv
-- tabulate
-
-
----
-
-## Mərhələ 2 — Enhanced Intelligence Layer
-
-### Planlaşdırılan funksiyalar
-- Jira API inteqrasiyası
-- Excel export
-- ML-based risk prediction
-- Team workload balancing
-- Web UI (Streamlit)
-- Dashboard və analytics
-- Real-time notifications
-
-### Məqsəd
-Sistemin real PM workflow-lara inteqrasiyası və daha ağıllı qərar dəstəyi təmin etmək.
-
-
----
-
-## Mərhələ 3 — Semi-Autonomous PM Agent
-
-### Planlaşdırılan funksiyalar
-- Slack / Teams bot inteqrasiyası
-- Avtomatik task assignment
-- Natural language sprint planning
-- AI-based estimation
-- Semi-autonomous Jira task creation
-- Multi-agent workflow orchestration
-
-### Məqsəd
-AI-assisted Project Management sistemindən semi-autonomous PM assistant modelinə keçid.
+## Phase 3 — Planned
+- Slack bot integration
+- Automatic task assignment
+- Semi-autonomous workflow
+- Human approval before Jira execution

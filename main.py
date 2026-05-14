@@ -1,48 +1,85 @@
 from src.agent import PMAgent
 
+
 def menu():
     agent = PMAgent()
-    
+
     while True:
-        print("\n" + "="*50)
+        print("\n" + "=" * 50)
         print("🤖 PM AI AGENT — MVP")
-        print("="*50)
+        print("=" * 50)
         print("1. CSV-dən task yüklə")
         print("2. Prioritetləşmə")
         print("3. Riskləri göstər")
         print("4. Status report yarat")
         print("5. Mətndən task generasiyası (AI)")
         print("6. Tam analiz (1+2+3+4)")
+        print("7. Jira-dan task çək və göstər")
+        print("8. Jira-dan task çək və analiz et")
         print("0. Çıxış")
-        
+
         choice = input("\nSeçim: ")
-        
-        if choice == '1':
+
+        if choice == "1":
             path = input("CSV yolu (default: data/tasks.csv): ") or "data/tasks.csv"
             agent.load_tasks(path)
-        elif choice == '2':
+
+        elif choice == "2":
             agent.analyze()
             agent.show_priorities()
-        elif choice == '3':
+
+        elif choice == "3":
             if not agent.risks:
                 agent.analyze()
             agent.show_risks()
-        elif choice == '4':
+
+        elif choice == "4":
             if not agent.tasks:
                 agent.load_tasks("data/tasks.csv")
             agent.analyze()
             agent.generate_report()
-        elif choice == '5':
+
+        elif choice == "5":
             desc = input("Layihə təsvirini yaz: ")
             print(agent.generate_from_description(desc))
-        elif choice == '6':
+
+        elif choice == "6":
             agent.load_tasks("data/tasks.csv")
             agent.analyze()
             agent.show_priorities()
             agent.show_risks()
             agent.generate_report()
-        elif choice == '0':
+
+        elif choice == "7":
+            from src.jira_layer import JiraConnector
+
+            jc = JiraConnector()
+            jira_tasks = jc.fetch_tasks()
+
+            print(f"\n✅ Jira-dan {len(jira_tasks)} task çəkildi:\n")
+
+            for task in jira_tasks:
+                print(task)
+
+        elif choice == "8":
+            from src.jira_layer import JiraConnector
+
+            jc = JiraConnector()
+            agent.tasks = jc.fetch_tasks()
+
+            print(f"\n✅ Jira-dan {len(agent.tasks)} task çəkildi")
+            agent.analyze()
+            agent.show_priorities()
+            agent.show_risks()
+            agent.generate_report()
+
+        elif choice == "0":
+            print("Çıxış edilir...")
             break
+
+        else:
+            print("Yanlış seçim. Yenidən cəhd et.")
+
 
 if __name__ == "__main__":
     menu()
