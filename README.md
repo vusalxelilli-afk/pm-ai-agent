@@ -42,3 +42,17 @@ The system follows a modular layered architecture and supports future integratio
 ```bash
 git clone https://github.com/vusalxelilli-afk/pm-ai-agent.git
 cd pm-ai-agent
+### Jira Integration
+
+The AI Agent is integrated with Jira Cloud through Jira REST API.
+
+The agent can:
+- connect to Jira using environment variables
+- create Jira issues automatically
+- send task name and description to Jira
+- generate new Jira work items after task analysis
+
+Example output:
+
+```text
+Jira issue created: PAA-4
